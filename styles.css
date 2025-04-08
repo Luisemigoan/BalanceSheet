@@ -1,0 +1,71 @@
+/*Se resetea todo el documento html a border-box*/
+html {
+    box-sizing: border-box;
+}
+
+/*Todo el body tendrá esta configuración*/
+body {
+    font-family: sans-serif;
+    color: #0a0a23;
+}
+
+/*Puedes usar CSS para hacer que los elementos con esta clase estén completamente ocultos de la página visual, pero que sigan siendo anunciados por los lectores de pantalla.
+
+El CSS que está a punto de escribir es un conjunto común de propiedades utilizadas para asegurar que los elementos estén completamente ocultos visualmente.*/
+
+/*Seleccionará cualquier elemento span que su clase incluya sr-only*/
+span[class~="sr-only"] {
+    border: 0;
+    /*La propiedad CSS clip se utiliza para definir la visibilidad de las partes de un elemento.*/
+    clip: rect(1px, 1px, 1px, 1px); /*Recorta el elemento a un rectángulo de 1 píxel*/
+    /*La propiedad clip-path determina la forma que la propiedad clip debe tomar.*/
+    clip-path: inset(50%); /*forma la región de recorte en un rectángulo dentro del elemento.*/
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap; /*Evitan que el contenido del texto se desborde*/
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+}
+
+/*Estilos para el encabezado de la tabla*/
+h1 {
+    max-width: 37.25rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+}
+
+/*esto mostrara los elementos anidados del fondo en la parte superior. */
+h1 .flex {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+}
+
+/*El pseudo-selector :first-of-type se utiliza para apuntar al primer elemento que coincida con el selector.*/
+h1 .flex span:first-of-type {
+    font-size: 0.7em;
+}
+
+/*El pseudo-selector :last-of-type hace exactamente lo contrario - apunta al último elemento que coincida con el selector.*/
+h1 .flex span:last-of-type {
+    font-size: 1.2em;
+}
+
+section  {
+    max-width: 40rem;
+    margin: 0 auto;
+    border: 2px solid #d0d0d5;
+}
+
+#years {
+    display: flex; /*Alinear en fila o columna*/
+    justify-content: flex-end; /*Alinea al final del contenedor*/
+    position: sticky; /*Posiciona el elemento fijamente*/
+    top: 0; /*FIja en la parte superior*/
+    color: #fff;
+    background-color: #0a0a23;
+    margin: 0 -2px;
+    padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0; /*La función calc() es una función CSS que te permite calcular un valor basado en otros valores. Por ejemplo, lo puedes usar para calcular el ancho del viewport menos el margen de un elemento*/
+}
