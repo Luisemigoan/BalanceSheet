@@ -15,18 +15,19 @@ El CSS que está a punto de escribir es un conjunto común de propiedades utiliz
 
 /*Seleccionará cualquier elemento span que su clase incluya sr-only*/
 span[class~="sr-only"] {
-    border: 0;
+    border: 0 !important;
     /*La propiedad CSS clip se utiliza para definir la visibilidad de las partes de un elemento.*/
-    clip: rect(1px, 1px, 1px, 1px); /*Recorta el elemento a un rectángulo de 1 píxel*/
+    clip: rect(1px, 1px, 1px, 1px) !important; /*Recorta el elemento a un rectángulo de 1 píxel*/
     /*La propiedad clip-path determina la forma que la propiedad clip debe tomar.*/
-    clip-path: inset(50%); /*forma la región de recorte en un rectángulo dentro del elemento.*/
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    white-space: nowrap; /*Evitan que el contenido del texto se desborde*/
-    position: absolute;
-    padding: 0;
-    margin: -1px;
+    clip-path: inset(50%) !important; /*forma la región de recorte en un rectángulo dentro del elemento.*/
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important; /*Evitan que el contenido del texto se desborde*/
+    position: absolute !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    /*En lugar de tener que revisar constantemente que no sobrescribas tus propiedades, puedes usar la palabra clave !important para asegurar que esas propiedades siempre serán aplicadas, sin importar el orden o la especificidad.*/
 }
 
 /*Estilos para el encabezado de la tabla*/
@@ -68,4 +69,41 @@ section  {
     background-color: #0a0a23;
     margin: 0 -2px;
     padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0; /*La función calc() es una función CSS que te permite calcular un valor basado en otros valores. Por ejemplo, lo puedes usar para calcular el ancho del viewport menos el margen de un elemento*/
+    z-index: 999;
+}
+
+/*La sintaxis span[class] apuntará a cualquier elemento span que tenga un atributo class, independientemente del valor del atributo.*/
+#years span[class] {
+    font-weight: bold;
+    width: 4.5rem;
+    text-align: right;
+}
+
+.table-wrap {
+    padding: 0 0.75rem 1.5rem 0.75rem;
+}
+
+/*El pseudo-selector :not() se utiliza para apuntar a todos los elementos que no coinciden con el selector - en este caso, cualquiera de tus elementos span que no tengan la clase sr-only, Esto asegura que tus reglas anteriores para el selector span[class~="sr-only"] no se sobreescriban.*/
+span/*:not(.sr-only)*/ {
+    font-weight: normal;
+}
+/*Ahora que se agregó important se puede eliminar :not(sr-only)*/
+
+table {
+    /*permitirá que los bordes de las celdas se contraigan en un solo borde, en lugar de un borde alrededor de cada celda.*/
+    border-collapse: collapse;
+    border: 0;
+    width: 100%; /*Llena su contenedor*/
+    position: relative; /*Posiciona el elemento de manera relativa a su contenedor*/
+    margin-top: 3rem; /*Espacio entre el encabezado y la tabla*/
+}
+
+table caption {
+    color: #356eaf;
+    font-size: 1.3em;
+    font-weight: normal;
+    position: absolute; /*Posiciona el elemento de manera absoluta*/
+    top: -2.25rem; /*Espacio entre encabezado y tabla*/
+    left: 0.5rem; /*Espacio entre borde y tabla*/
+
 }
