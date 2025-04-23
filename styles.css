@@ -84,9 +84,9 @@ section  {
 }
 
 /*El pseudo-selector :not() se utiliza para apuntar a todos los elementos que no coinciden con el selector - en este caso, cualquiera de tus elementos span que no tengan la clase sr-only, Esto asegura que tus reglas anteriores para el selector span[class~="sr-only"] no se sobreescriban.*/
-span/*:not(.sr-only)*/ {
+/*span:not(.sr-only) {
     font-weight: normal;
-}
+}*/
 /*Ahora que se agregó important se puede eliminar :not(sr-only)*/
 
 table {
@@ -105,5 +105,73 @@ table caption {
     position: absolute; /*Posiciona el elemento de manera absoluta*/
     top: -2.25rem; /*Espacio entre encabezado y tabla*/
     left: 0.5rem; /*Espacio entre borde y tabla*/
+}
 
+tbody td { /*Selecciona todas las celdas de la tabla*/
+    width: 100vw; /*Llena su contenedor*/
+    min-width: 4rem;
+    max-width: 4rem;
+}
+
+tbody th { 
+    width: calc(100% - 12rem) /*Resta el ancho de las celdas de la tabla al ancho total de la tabla*/
+}
+
+tr[class="total"] { /*Selecciona la fila con la clase total*/
+    border-bottom: 4px double #0a0a23; 
+    font-weight: bold; 
+}
+
+tr[class="total"] th { /*Selecciona la celda de la fila con la clase total*/
+    text-align: left;
+    padding: 0.5rem 0 0.25rem 0.5rem;
+  }
+
+  /*La diferencia clave entre tr[class="total"] y tr.total es que el primero seleccionara los elementos tr donde la única clase sea total. El segundo seleccionará todos los elementos tr donde la clase sea total.*/
+
+tr.total td {
+    text-align: right;
+    padding: 0 0.25rem;
+}
+
+/*El pseudo-selector :nth-of-type() se utiliza para apuntar a elementos específicos en función de su orden entre los hermanos del mismo tipo.*/
+
+tr.total td:nth-of-type(3) { /*Selecciona la tercera celda de la fila con la clase total*/
+    padding-right: 0.5rem;
+}
+
+tr.total:hover {
+    background-color: #99c9ff
+}
+
+td[class="current"] {
+    font-style: italic;
+}
+
+tr[class="data"] {
+    background-image: linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+}
+
+tr.data th {
+    text-align: left;
+    padding-top: 0.3rem;
+    padding-left: 0.5rem;
+}
+
+tr.data th .description {
+    display:block;
+    font-style: italic;
+    font-weight: normal;
+    padding: 1rem 0 0.75rem;
+    margin-right: -13.5rem;
+}
+
+tr.data td {
+    vertical-align: top;
+    text-align: right;
+    padding: 0.3rem 0.25rem 0
+}
+
+tr.data td:last-of-type {
+    padding-right: 0.5rem;
 }
